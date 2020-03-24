@@ -4,6 +4,9 @@
   "description": "Convert new bv code of bilibili to old av code",
   "main": "lib/index.js",
   "types": "types/index.d.ts",
+  "bin": {
+    "bv2av": "bin/cli.js"
+  },
   "scripts": {
     "tsc": "tsc --module commonjs --target es5",
     "rollup": "rollup -c rollup.config.js",
@@ -39,6 +42,7 @@
     "typescript": "^3.8.3"
   },
   "dependencies": {
-    "axios": "^0.19.2"
+    "axios": "^0.19.2",
+    "minimist": "^1.2.5"
   }
 }

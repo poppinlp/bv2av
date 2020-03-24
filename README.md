@@ -1,6 +1,6 @@
 # bv2av
 
-把bilibili新的bv号转回旧的av号
+把 bilibili 新的 bv 号转回旧的 av 号。
 
 [![Build Status][ci-img]][ci-url]
 [![Dependency Status][dep-img]][dep-url]
@@ -23,17 +23,24 @@ By yarn:
 yarn add bv2av
 ```
 
-## Methods
+## CLI
 
-更详细的内容，可以看 `types/index.d.ts`。
+```shell
+bv2av --bv=xxxxx --all
+```
 
-- getBvInfo
-- bv2av
+With `--all`, we will get all infomations. Without it, we will get the av ID only.
+
+## Module
+
+模块导出了两个方法，更详细的内容，可以看 `types/index.d.ts`。
+
+- getBvInfo: get some info of the video such as title, cover, e.t.c.
+- bv2av: get only av ID of the video.
 
 ## TODO
 
-- add CLI
-- add git-page
+- add git page for online search.
 
 ## Test
 
