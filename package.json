@@ -1,6 +1,6 @@
 {
   "name": "bv2av",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Convert new bv code of bilibili to old av code",
   "main": "lib/index.js",
   "types": "types/index.d.ts",
