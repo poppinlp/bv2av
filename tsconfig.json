@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "declaration": true,
+    "declarationDir": "./types",
+    "forceConsistentCasingInFileNames": true,
+    "importHelpers": true,
+    "moduleResolution": "node",
+    "outDir": "./lib",
+    "strict": true
+  },
+  "include": [
+    "./src/*"
+  ]
+}

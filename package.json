@@ -1,0 +1,44 @@
+{
+  "name": "bv2av",
+  "version": "0.1.0",
+  "description": "Convert new bv code of bilibili to old av code",
+  "main": "lib/index.js",
+  "types": "types/index.d.ts",
+  "scripts": {
+    "tsc": "tsc --module commonjs --target es5",
+    "rollup": "rollup -c rollup.config.js",
+    "test": "node test/index.test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/poppinlp/bv2av.git"
+  },
+  "keywords": [
+    "bilibili",
+    "bv2av"
+  ],
+  "author": "PoppinL<poppinlp@gmail.com>",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/poppinlp/bv2av/issues"
+  },
+  "homepage": "https://github.com/poppinlp/bv2av#readme",
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^11.0.2",
+    "@rollup/plugin-json": "^4.0.2",
+    "@rollup/plugin-node-resolve": "^7.1.1",
+    "@types/node": "^13.9.3",
+    "@typescript-eslint/eslint-plugin": "^2.25.0",
+    "@typescript-eslint/parser": "^2.25.0",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.10.1",
+    "eslint-plugin-prettier": "^3.1.2",
+    "prettier": "^2.0.2",
+    "rollup": "^2.1.0",
+    "tslib": "^1.11.1",
+    "typescript": "^3.8.3"
+  },
+  "dependencies": {
+    "axios": "^0.19.2"
+  }
+}
