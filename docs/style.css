@@ -3,11 +3,12 @@ html{line-height:1.15;-webkit-text-size-adjust:100%}body{margin:0}main{display:b
 html {
   height: 100vh;
   background-image: url("bg.jpg");
-  background-size: cover;
+  background-size: contain;
 }
 
 body {
-  width: 400px;
+  max-width: 400px;
+  width: 90vw;
   margin: 100px auto;
 }
 
