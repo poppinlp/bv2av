@@ -31,14 +31,14 @@ yarn add bv2av
 bv2av --bv=xxxxx --all
 ```
 
-With `--all`, we will get all infomations. Without it, we will get the av ID only.
+`--all` 参数可以让我们获取到更多视频的相关信息，如果没有的话则只返回 av 号。
 
 ## Module
 
 模块导出了两个方法，更详细的内容，可以看 `types/index.d.ts`。
 
-- getBvInfo: get some info of the video such as title, cover, e.t.c.
-- bv2av: get only av ID of the video.
+- getBvInfo: 得到这个视频的相关信息，例如标题、封面图等等
+- bv2av: 只得到对应的 av 号
 
 ## Test
 
