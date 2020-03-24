@@ -3,8 +3,6 @@
 把bilibili新的bv号转回旧的av号
 
 [![Build Status][ci-img]][ci-url]
-[![Code coverage][cov-img]][cov-url]
-[![Code style][lint-img]][lint-url]
 [![Dependency Status][dep-img]][dep-url]
 [![Dev Dependency Status][dev-dep-img]][dev-dep-url]
 [![NPM version][npm-ver-img]][npm-url]
@@ -32,6 +30,11 @@ yarn add bv2av
 - getBvInfo
 - bv2av
 
+## TODO
+
+- add CLI
+- add git-page
+
 ## Test
 
 ```shell
@@ -40,10 +43,6 @@ npm test
 
 [ci-img]: https://img.shields.io/travis/poppinlp/bv2av.svg?style=flat-square
 [ci-url]: https://travis-ci.org/poppinlp/bv2av
-[cov-img]: https://img.shields.io/coveralls/poppinlp/bv2av.svg?style=flat-square
-[cov-url]: https://coveralls.io/github/poppinlp/bv2av?branch=master
-[lint-img]: https://img.shields.io/badge/code%20style-handsome-brightgreen.svg?style=flat-square
-[lint-url]: https://github.com/poppinlp/eslint-config-handsome
 [dep-img]: https://img.shields.io/david/poppinlp/bv2av.svg?style=flat-square
 [dep-url]: https://david-dm.org/poppinlp/bv2av
 [dev-dep-img]: https://img.shields.io/david/dev/poppinlp/bv2av.svg?style=flat-square
