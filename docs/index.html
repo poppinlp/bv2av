@@ -1,1 +1,78 @@
-test git page
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover,user-scalable=no">
+  <meta name="application-name" content="Bilibili BV to AV">
+  <meta name="keywords" content="bilibili,bv2vc">
+  <meta name="description" content="把 bilibili 新的 bv 号转回旧的 av 号">
+  <title>BV2AV - 张小猪</title>
+  <link rel="icon" type="image/jpg" href="https://pic1.zhimg.com/v2-9a12ac951674d3568caa4acb5783e308_xll.jpg">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <form>
+    <p>请输入 BV 号</p>
+    <input type="text" name="bvid" />
+    <button type="submit">查询</button>
+  </form>
+  <p class="error" id="error"></p>
+  <div class="result">
+    <div><label>AV号</label><p id="avid"></p></div>
+    <div><label>标题</label><p id="title"></p></div>
+    <div><label>封面图</label><p><img id="cover" width="200" height="140"></img></p></div>
+    <div><label>链接</label><p><a id="link"></a></p></div>
+    <div><label>描述</label><p id="desc"></p></div>
+  </div>
+  <script src="axios.min.js"></script>
+  <script src="lib.js"></script>
+  <script>
+    var form = document.forms[0];
+    var error = document.getElementById('error');
+    var avid = document.getElementById('avid');
+    var title = document.getElementById('title');
+    var cover = document.getElementById('cover');
+    var link = document.getElementById('link');
+    var desc = document.getElementById('desc');
+
+    function showError(msg) {
+      error.innerText = msg;
+    }
+
+    if (!Promise) {
+      showError('请不要使用低版本的 IE 浏览器，因为小猪比较懒~')
+    } else {
+      form.addEventListener('submit', onSubmit);
+    }
+
+    function onSubmit(e) {
+      e.preventDefault();
+      showError('');
+      try {
+        var data = new FormData(form);
+        var bvid = data.get('bvid').trim();
+        console.log(bvid);
+        if (!bvid) {
+          throw new Error('BV 号不能为空');
+        }
+        getBvInfo(bvid).then(data => {
+          const av = `av${data.aid}`;
+          avid.innerText = av;
+          title.innerText = data.title;
+          cover.src = data.pic;
+          link.innerText = `https://www.bilibili.com/video/${av}`;
+          link.href = `https://www.bilibili.com/video/${av}`;
+          desc.innerText = data.desc;
+        }).catch(err => {
+          showError(err);
+        });
+      } catch (err) {
+        showError(err.message);
+      }
+    }
+  </script>
+</body>
+
+</html>

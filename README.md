@@ -2,6 +2,8 @@
 
 把 bilibili 新的 bv 号转回旧的 av 号。
 
+支持[网页端直接使用](https://poppinlp.com/bv2av/)。
+
 [![Build Status][ci-img]][ci-url]
 [![Dependency Status][dep-img]][dep-url]
 [![Dev Dependency Status][dev-dep-img]][dev-dep-url]
@@ -37,10 +39,6 @@ With `--all`, we will get all infomations. Without it, we will get the av ID onl
 
 - getBvInfo: get some info of the video such as title, cover, e.t.c.
 - bv2av: get only av ID of the video.
-
-## TODO
-
-- add git page for online search.
 
 ## Test
 
