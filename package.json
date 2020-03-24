@@ -1,6 +1,6 @@
 {
   "name": "bv2av",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Convert new bv code of bilibili to old av code",
   "main": "lib/index.js",
   "types": "types/index.d.ts",
@@ -12,6 +12,12 @@
     "rollup": "rollup -c rollup.config.js",
     "test": "node test/index.test.js"
   },
+  "files": [
+    "bin",
+    "lib",
+    "src",
+    "types"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/poppinlp/bv2av.git"
