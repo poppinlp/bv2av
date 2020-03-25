@@ -14,6 +14,7 @@ body {
 
 p {
   margin: 6px 0;
+  word-break:break-word;
 }
 
 .error {
