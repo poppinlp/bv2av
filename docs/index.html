@@ -97,13 +97,12 @@
         }
 
         const rsp = await getBvInfo(bvid);
-        const av = `av${rsp.aid}`;
 
-        avid.innerText = av;
+        avid.innerText = rsp.avID;
         title.innerText = rsp.title;
-        cover.src = rsp.pic;
-        link.innerText = `https://www.bilibili.com/video/${av}`;
-        link.href = `https://www.bilibili.com/video/${av}`;
+        cover.src = rsp.cover;
+        link.innerText = rsp.avUrl;
+        link.href = rsp.avUrl;
         desc.innerText = rsp.desc;
 
         result.classList.remove('hidden');
