@@ -1,15 +1,15 @@
-import axios from 'axios';
+const axios = require("axios");
 
-const API = 'https://api.bilibili.com/x/web-interface/view';
+const API = "https://api.bilibili.com/x/web-interface/view";
 const HEADER = {
-  'User-Agent':
-    'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.149 Safari/537.36',
+  "User-Agent":
+    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.149 Safari/537.36",
 };
 
 class RequestError extends Error {
   constructor(code, msg) {
     super(msg);
-    this.name = 'RequestError';
+    this.name = "RequestError";
     this.errorCode = code;
   }
   toString() {
@@ -17,7 +17,7 @@ class RequestError extends Error {
   }
 }
 
-export async function getBvInfo(bv) {
+async function getBvInfo(bv) {
   const rsp = await axios.get(API, {
     params: {
       bvid: bv,
@@ -42,7 +42,12 @@ export async function getBvInfo(bv) {
   };
 }
 
-export async function bv2av(bv) {
+async function bv2av(bv) {
   const info = await getBvInfo(bv);
   return info.avID;
 }
+
+module.exports = {
+  getBvInfo,
+  bv2av,
+};
