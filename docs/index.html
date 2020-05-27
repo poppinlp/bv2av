@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,32 +14,67 @@
 </head>
 
 <body>
-  <form>
-    <p>请输入 BV 号</p>
-    <input type="text" name="bvid" />
-    <button type="submit">查询</button>
-  </form>
-  <p class="error" id="error"></p>
-  <div class="result">
-    <div><label>AV号</label><p id="avid"></p></div>
-    <div><label>标题</label><p id="title"></p></div>
-    <div><label>封面图</label><p><img id="cover" width="200" height="140"></img></p></div>
-    <div><label>链接</label><p><a id="link"></a></p></div>
-    <div><label>描述</label><p id="desc"></p></div>
-  </div>
+  <h1>BV2AV 在线转换</h1>
+  <section>
+    <form>
+      <fieldset>
+        <legend>请输入 BV 号</legend>
+        <input type="text" name="bvid" />
+      </fieldset>
+      <button type="submit">查询</button>
+    </form>
+    <p id="error" class="error"></p>
+  </section>
+  <section id="result" class="result hidden">
+    <figure>
+      <figcaption>AV号</figcaption>
+      <p id="avid"></p>
+    </figure>
+    <figure>
+      <figcaption>标题</figcaption>
+      <p id="title"></p>
+    </figure>
+    <figure>
+      <figcaption>封面图</figcaption>
+      <p><img id="cover" width="216" height="135" /></p>
+    </figure>
+    <figure>
+      <figcaption>链接</figcaption>
+      <p><a id="link"></a></p>
+    </figure>
+    <figure>
+      <figcaption>描述</figcaption>
+      <p id="desc"></p>
+    </figure>
+  </section>
   <script src="axios.min.js"></script>
-  <script src="lib.js"></script>
   <script>
-    var form = document.forms[0];
-    var error = document.getElementById('error');
-    var avid = document.getElementById('avid');
-    var title = document.getElementById('title');
-    var cover = document.getElementById('cover');
-    var link = document.getElementById('link');
-    var desc = document.getElementById('desc');
+    const form = document.forms[0];
+    const error = document.getElementById('error');
+    const result = document.getElementById('result');
+    const avid = document.getElementById('avid');
+    const title = document.getElementById('title');
+    const cover = document.getElementById('cover');
+    const link = document.getElementById('link');
+    const desc = document.getElementById('desc');
+
+    const API = "https://1778337455289551.cn-shanghai.fc.aliyuncs.com/2016-08-15/proxy/bv2av/getBvInfo/";
 
     function showError(msg) {
       error.innerText = msg;
+    }
+
+    async function getBvInfo(bv) {
+      const rsp = await fetch(`${API}?bvid=${bv}`, {
+        method: 'GET',
+        mode: 'cors',
+        cache: 'no-cache',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+      const json = await rsp.json();
+      return json;
     }
 
     if (!Promise) {
@@ -47,27 +83,30 @@
       form.addEventListener('submit', onSubmit);
     }
 
-    function onSubmit(e) {
+    async function onSubmit(e) {
       e.preventDefault();
       showError('');
+      result.classList.add('hidden');
+
       try {
-        var data = new FormData(form);
-        var bvid = data.get('bvid').trim();
-        console.log(bvid);
+        const data = new FormData(form);
+        const bvid = data.get('bvid').trim();
+
         if (!bvid) {
           throw new Error('BV 号不能为空');
         }
-        getBvInfo(bvid).then(data => {
-          const av = `av${data.aid}`;
-          avid.innerText = av;
-          title.innerText = data.title;
-          cover.src = data.pic;
-          link.innerText = `https://www.bilibili.com/video/${av}`;
-          link.href = `https://www.bilibili.com/video/${av}`;
-          desc.innerText = data.desc;
-        }).catch(err => {
-          showError(err);
-        });
+
+        const rsp = await getBvInfo(bvid);
+        const av = `av${rsp.aid}`;
+
+        avid.innerText = av;
+        title.innerText = rsp.title;
+        cover.src = rsp.pic;
+        link.innerText = `https://www.bilibili.com/video/${av}`;
+        link.href = `https://www.bilibili.com/video/${av}`;
+        desc.innerText = rsp.desc;
+
+        result.classList.remove('hidden');
       } catch (err) {
         showError(err.message);
       }

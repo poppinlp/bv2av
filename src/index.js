@@ -6,32 +6,18 @@ const HEADER = {
     'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.149 Safari/537.36',
 };
 
-interface RequestError extends Error {
-  errorCode: number;
-}
-
-interface BVInfo {
-  title: string;
-  desc: string;
-  cover: string;
-  bvID: string;
-  avID: string;
-  avUrl: string;
-  bvUrl: string;
-}
-
 class RequestError extends Error {
-  constructor(code: number, msg: string) {
+  constructor(code, msg) {
     super(msg);
     this.name = 'RequestError';
     this.errorCode = code;
   }
-  toString(): string {
+  toString() {
     return `[${this.errorCode}] Request failed: ${this.message}`;
   }
 }
 
-export async function getBvInfo(bv: string): Promise<BVInfo> {
+export async function getBvInfo(bv) {
   const rsp = await axios.get(API, {
     params: {
       bvid: bv,
@@ -56,7 +42,7 @@ export async function getBvInfo(bv: string): Promise<BVInfo> {
   };
 }
 
-export async function bv2av(bv: string): Promise<string> {
+export async function bv2av(bv) {
   const info = await getBvInfo(bv);
   return info.avID;
 }

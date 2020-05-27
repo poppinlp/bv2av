@@ -3,18 +3,35 @@ html{line-height:1.15;-webkit-text-size-adjust:100%}body{margin:0}main{display:b
 html {
   height: 100vh;
   background-image: url("bg.jpg");
-  background-size: contain;
+  background-size: cover;
 }
 
 body {
-  max-width: 400px;
+  box-sizing: border-box;
+  max-width: 600px;
   width: 90vw;
   margin: 100px auto;
+  padding: 20px 50px;
+  background-color: rgba(255, 255, 255, 0.6);
+  border-radius: 20px;
+}
+
+section {
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+button {
+  margin-top: 10px;
+}
+
+figcaption {
+  font-weight: bold;
 }
 
 p {
-  margin: 6px 0;
-  word-break:break-word;
+  margin: 5px 0;
+  word-break: break-word;
 }
 
 .error {
@@ -22,10 +39,10 @@ p {
 }
 
 .result {
-  margin-top: 30px;
-  padding: 5px 10px;
-  background-color: rgba(255, 255, 255, 0.8);
+  padding: 10px 0;
+  border: 1px solid #aaa;
 }
-.result div {
-  margin: 10px 0;
+
+.hidden {
+  display: none;
 }
